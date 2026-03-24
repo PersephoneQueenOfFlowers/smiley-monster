@@ -1,0 +1,258 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.header {
+  max-width: 40rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.blurb {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-clean {
+  background: linear-gradient(145deg, #7dd87d, #3dad5c);
+  color: #0a2a0f;
+  box-shadow: 0 4px 14px rgba(61, 173, 92, 0.45);
+}
+
+.btn-filthy {
+  background: linear-gradient(145deg, #c084fc, #7c3aed);
+  color: #1e0a33;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+}
+
+.btn-stop {
+  background: #e8e8ec;
+  color: #333;
+}
+
+.status {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.tag-clean,
+.tag-filthy {
+  font-weight: 700;
+}
+
+.tag-clean {
+  color: #1d7a3a;
+}
+
+.tag-filthy {
+  color: #6b21a8;
+}
+
+.audio-panel {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.04);
+  text-align: left;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.audio-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  cursor: pointer;
+  margin-bottom: 0.65rem;
+}
+
+.audio-toggle input {
+  margin-top: 0.2rem;
+}
+
+.audio-output-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.audio-output-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.audio-select {
+  flex: 1;
+  min-width: 10rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.btn-small {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.audio-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #666;
+}
+
+.playfield {
+  position: relative;
+  width: min(100%, 520px);
+  height: min(58vh, 420px);
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #eef6ff 0%, #dcecf8 45%, #c8dde8 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    0 12px 40px rgba(30, 60, 90, 0.15);
+  overflow: hidden;
+}
+
+.spout {
+  position: absolute;
+  bottom: 8px;
+  width: 48px;
+  height: 16px;
+  border-radius: 8px;
+  opacity: 0.35;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.spout--on {
+  opacity: 1;
+  animation: spout-pulse 0.45s ease-in-out infinite alternate;
+}
+
+.spout-clean {
+  left: calc(50% - 56px);
+  background: radial-gradient(circle, #b8f5b8, #4caf50);
+}
+
+.spout-filthy {
+  right: calc(50% - 56px);
+  background: radial-gradient(circle, #e9d5ff, #7c3aed);
+}
+
+@keyframes spout-pulse {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(1.15);
+  }
+}
+
+.emoji {
+  position: absolute;
+  font-size: 1.75rem;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.smiley {
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+.monster {
+  animation: bob 1.6s ease-in-out infinite reverse;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .blurb {
+    color: #bbb;
+  }
+
+  .status {
+    color: #aaa;
+  }
+
+  .audio-panel {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .audio-select {
+    background: #1a1c22;
+    border-color: #444;
+    color: #eee;
+  }
+
+  .audio-hint {
+    color: #999;
+  }
+
+  .btn-stop {
+    background: #2a2a32;
+    color: #e0e0e0;
+  }
+
+  .playfield {
+    background: linear-gradient(180deg, #1a2430 0%, #152028 50%, #0f181f 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+}
